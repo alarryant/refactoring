@@ -1,22 +1,21 @@
 function loopyLighthouse(range, multiples, words) {
-  var min = range[0];
-  var max = range[1];
-  var firstReplace = Number(multiples[0]);
-  var secondReplace = Number(multiples[1]);
+  for (var i = range[0]; i <= range[1]; i++) {
+    console.log(replaceWord(i, multiples, words))
+  }
 
-  for (var i = min; i <= max; i++) {
-    if ((i % firstReplace === 0) && (i % secondReplace === 0)) {
-      console.log(words[0] + words[1]);
+function replaceWord(increment, multiples, words) {
+  var newString = '';
+    if (increment % multiples[0] === 0) {
+      newString += words[0];
     }
-    else if (i % secondReplace === 0) {
-      console.log(words[1]);
+    if (increment % multiples[1] === 0) {
+      newString += words[1];
     }
-    else if (i % firstReplace === 0) {
-      console.log(words[0]);
+    if (newString === '') {
+      newString = increment
     }
-    else {
-      console.log(i);
-    }
+    return newString;
   }
 }
+
 console.log(loopyLighthouse([1, 100], [2, 5], ["dogs", "cats"]));
